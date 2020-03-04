@@ -1,0 +1,14 @@
+.App {
+  padding: 20px;
+}
+
+.form {
+    margin-bottom: 30px;
+}
+
+.error {
+    color: red;
+}
+.success {
+    color: green;
+}
