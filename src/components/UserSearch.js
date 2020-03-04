@@ -9,7 +9,7 @@ function UserSearch({ admin }) {
   const [sort, setSort] = useState(localStorage.getItem("sort"));
 
   useEffect(() => {
-    fetch("http://www.mocky.io/v2/5d7f3d17330000204ef0b027?mocky-delay=500ms")
+    fetch("https://www.mocky.io/v2/5d7f3d17330000204ef0b027?mocky-delay=500ms")
       .then(response => response.json())
       .then(data => {
         setDefaultData(data.users);
