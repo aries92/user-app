@@ -3,7 +3,7 @@ import "./App.css";
 import UserSearch from "./components/UserSearch";
 import { ADMIN_ROLES } from "./constants";
 
-const pageUrl = "/usersearch-page";
+const pageUrl = "/user-app/usersearch-page";
 
 function App() {
   const [redirected, setRedirected] = useState(false);
