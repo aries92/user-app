@@ -31,7 +31,7 @@ function App() {
 
     if (isValid) {
       setTimeout(() => {
-        location.hash = pageUrl;
+        window.location.hash = pageUrl;
         setRedirected(true);
       }, 1000);
     }
