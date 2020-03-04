@@ -3,7 +3,7 @@ import "./App.css";
 import UserSearch from "./components/UserSearch";
 import { ADMIN_ROLES } from "./constants";
 
-const pageUrl = "/user-app/usersearch-page";
+const pageUrl = "#usersearch-page";
 
 function App() {
   const [redirected, setRedirected] = useState(false);
@@ -12,9 +12,9 @@ function App() {
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-    setRedirected(window.location.pathname === pageUrl);
-    setSuccess(window.location.pathname === pageUrl);
-    setAdmin(window.location.pathname === pageUrl ? ADMIN_ROLES.crudadmin : "");
+    setRedirected(window.location.hash === pageUrl);
+    setSuccess(window.location.hash === pageUrl);
+    setAdmin(window.location.hash === pageUrl ? ADMIN_ROLES.crudadmin : "");
   }, []);
 
   function handleChange(e) {
@@ -31,7 +31,7 @@ function App() {
 
     if (isValid) {
       setTimeout(() => {
-        window.history.pushState(null, null, pageUrl);
+        location.hash = pageUrl;
         setRedirected(true);
       }, 1000);
     }
@@ -39,7 +39,7 @@ function App() {
 
   return (
     <div className="App">
-      {window.location.pathname !== pageUrl && (
+      {window.location.hash !== pageUrl && (
         <form onSubmit={handleSubmit} className="form">
           <section>
             <label htmlFor="“admin-id">admin-id</label>
@@ -58,7 +58,7 @@ function App() {
           </section>
         </form>
       )}
-      {window.location.pathname === pageUrl && redirected && success && (
+      {window.location.hash === pageUrl && redirected && success && (
         <UserSearch admin={admin} />
       )}
     </div>
