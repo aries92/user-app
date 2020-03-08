@@ -12,8 +12,9 @@ function UserSearch({ admin }) {
     fetch("https://www.mocky.io/v2/5d7f3d17330000204ef0b027?mocky-delay=500ms")
       .then(response => response.json())
       .then(data => {
-        setDefaultData(data.users);
-        setData(sort ? sortData(data.users, sort) : data.users);
+        const userData = data.users.map((d, i) => ({ ...d, id: i }));
+        setDefaultData(userData);
+        setData(sort ? sortData(userData, sort) : userData);
       });
   }, []);
 
@@ -58,8 +59,8 @@ function UserSearch({ admin }) {
         </p>
       )}
       <hr />
-      {data.map((user, index) => (
-        <div key={index}>
+      {data.map(user => (
+        <div key={user.id}>
           <div>
             <b>Surname:</b> {user.lastname}
           </div>
